@@ -10,7 +10,7 @@ import SwiftUI
 struct TextLargeTitleHeavyModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(.title)
+            .font(.largeTitle)
             .fontWeight(.heavy)
             .foregroundStyle(Color(hex: "09122C"))
     }
@@ -20,7 +20,6 @@ struct TextTitleBoldModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .foregroundStyle(Color(hex: "09122C"))
-            .font(.headline)
             .fontWeight(.light)
             .multilineTextAlignment(.center)
     }
@@ -29,9 +28,8 @@ struct TextTitleBoldModifier: ViewModifier {
 struct TextSubTitleLightCenteredModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 23))
             .fontWeight(.light)
-            .multilineTextAlignment(.center)
+            .multilineTextAlignment(.leading)
             .foregroundStyle(Color(hex: "09122C"))
     }
 }

@@ -26,9 +26,10 @@ struct RoundedSignInButton: ViewModifier {
             .foregroundStyle(Color(hex:"FFFFFF"))
             .padding(.horizontal, 16)
             .padding()
-            .frame(maxWidth: 300)
+            .frame(maxWidth: .infinity)
             .background(Color.black)
             .clipShape(.capsule, style: .init())
+            .padding(.horizontal, .pi)
     }
 }
 
@@ -45,6 +46,31 @@ struct ContinueLoginWithEmailButton: ViewModifier {
     }
 }
 
+struct ContinueLoginWithEmailButtonDisable: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .foregroundStyle(Color(hex:"000000"))
+            .fontWeight(.semibold)
+            .padding(.horizontal, 16)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color(hex:"FFE6C9"))
+            .clipShape(.capsule, style: .init())
+    }
+}
+
+struct ContinueToLoginTinyButton: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 20))
+            .frame(maxWidth: 70, alignment: .center)
+            .padding()
+            .foregroundStyle(Color(hex:"FFFFFF"))
+            .background(Color(hex:"09122C"))
+            .clipShape(.capsule, style: .init())
+    }
+}
+
 extension View {
     func roundedBlackButton() -> some View {
         modifier(RoundedBlackButton())
@@ -55,6 +81,9 @@ extension View {
     func continueLoginWithEmailButton() -> some View {
         modifier(ContinueLoginWithEmailButton())
     }
+    func continueToLoginTinyButton() -> some View {
+        modifier(ContinueToLoginTinyButton())
+    }
 }
 
 #Preview {
@@ -64,7 +93,11 @@ extension View {
         
         Text("Button")
             .roundedSignInButton()
+        
         Text("Button")
             .continueLoginWithEmailButton()
+        
+        Text("Button")
+            .continueToLoginTinyButton()
     }
 }

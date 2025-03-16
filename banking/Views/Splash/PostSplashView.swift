@@ -42,8 +42,6 @@ struct PostSplashView: View {
                                         removal: .move(edge: .leading).combined(with: .opacity)
                                     ))
                             }
-
-                            Spacer()
                         }
                         .padding()
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
@@ -76,31 +74,39 @@ struct PostSplashFirstView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Text("Freedom")
-                    .textLargeTitleHeavyModifier()
+                VStack {
+                    Text(AppTextConstants.Onboarding.subtitleSaving)
+                        .font(.system(size: geometry.size.height * 0.08))
+                        .fontWeight(.bold)
+                        .padding(.top, 10)
+                        .padding(.bottom, 1)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Text(AppTextConstants.Onboarding.descriptionBanking)
+                        .font(.system(size: geometry.size.height * 0.05))
+                        .font(.body)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .padding(.horizontal)
                 
-                Text("Saving is now easier, more pratical, and safer")
-                    .textSubTitleLightCenteredModifier()
-
-                Text("Your Money, Simplified. Banking That Works For You.No paperwork. No waiting. Just simple, powerful banking at your fingertips.")
-                    .textTitleBoldModifier()
-                    .padding(.top, geometry.size.height * 0.01)
+                Spacer()
                 
                 Button(action: {
                     // show next view
                     viewModel.goToNextPage()
                 }) {
                     Text("Next")
-                        .roundedBlackButton()
+                        .continueToLoginTinyButton()
                 }
-                .padding([.top, .bottom], geometry.size.height * 0.09)
+                .padding(.bottom, geometry.size.height * 0.07)
+                .frame(maxWidth: .infinity, alignment: .trailing)
                 
                 VStack {
                     Text("Made by ") + Text("Andelson Lopez").fontWeight(.bold)
                 }
                 .frame(alignment: .bottom)
             }
-//            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         }
     }
 }
@@ -114,15 +120,18 @@ struct PostSplashSecondView: View {
                 
                 VStack {
                     Text("Get Started")
-                        .textLargeTitleHeavyModifier()
+                        .font(.system(size: geometry.size.height * 0.08))
+                        .fontWeight(.bold)
+                        .padding(.top, 10)
+                        .padding(.bottom, 1)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    Text("Register for Financial Workshops and Visualize Your Financial Journey Connect with financial education opportunities.")
+                    Text(AppTextConstants.Onboarding.descriptionWorkshops)
+                        .font(.system(size: geometry.size.height * 0.05))
                         .font(.body)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .padding(10)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                .simpleBorder()
+                .padding(.horizontal)
                 
                 VStack {
                     NavigationLink(destination: LoginView()) {
@@ -153,7 +162,6 @@ struct PostSplashSecondView: View {
 
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-//                .simpleBorder()
                 
                 Spacer()
                 
@@ -167,8 +175,6 @@ struct PostSplashSecondView: View {
                     }
                 }
                 .padding()
-                .frame(maxWidth: .infinity)
-//                .simpleBorder()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         }

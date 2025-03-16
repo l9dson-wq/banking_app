@@ -52,7 +52,7 @@ struct DeviceResponsiveDesign {
         case .standardPhone:
             return geometry.size.height * -0.20
         case .largePhone:
-            return geometry.size.height * -0.01
+            return geometry.size.height * -0.10
         case .iPad, .iPadPro, .mac:
             return geometry.size.height * -0.05
         case .unknown:

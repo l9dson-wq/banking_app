@@ -9,6 +9,8 @@ import Foundation
 
 class OnboardingViewModel: ObservableObject {
     @Published var currentPage: Int8 = 0
+    @Published var userEmail: String = ""
+    @Published var emailCode: String = ""
     
     init() {
         // TODO

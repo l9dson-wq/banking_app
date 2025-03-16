@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LoginView: View {
     @State var previewEmail = ""
+    @Environment(\.presentationMode) var presentationMode
+    @StateObject private var viewModel: OnboardingViewModel = OnboardingViewModel()
     
     var body: some View {
         ZStack {
@@ -27,7 +29,6 @@ struct LoginView: View {
                         .foregroundStyle(Color(hex:"FFF"))
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-//                .padding(10)
                 
                 VStack {
                     Text("Email")
@@ -37,7 +38,7 @@ struct LoginView: View {
                     
                     TextField(
                         "",
-                        text: $previewEmail,
+                        text: $viewModel.userEmail,
                         prompt: Text("Type your email here").foregroundStyle(Color(hex:"cccccc"))
                     )
                     .font(.system(size: 16))
@@ -54,18 +55,30 @@ struct LoginView: View {
                 
                 Spacer()
                 
-                Button(action: {
-                    
-                }) {
+                NavigationLink(destination: LoginByEmailSecurityCode().environmentObject(viewModel)) {
                     Text("Continue")
-                        .continueLoginWithEmailButton()
+                        .foregroundStyle(Color(hex: "000"))
+                        .font(.headline)
                 }
-                .padding(.bottom, 40)
-                .padding([.leading, .trailing], 20)
+                .continueLoginWithEmailButton()
             }
             .padding(20)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .onChange(of: viewModel.userEmail) { newValue in
+            print("Email changed to: \(newValue)")
+        }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button(action: {
+            presentationMode.wrappedValue.dismiss()
+        }) {
+            HStack {
+                Image(systemName: "arrowshape.left.fill", variableValue: 1.00)
+                    .symbolRenderingMode(.monochrome)
+                    .foregroundColor(Color(hex:"FFF"))
+                    .font(.system(size: 16, weight: .regular))
+            }
+        })
     }
 }
 
