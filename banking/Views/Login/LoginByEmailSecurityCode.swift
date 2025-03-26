@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginByEmailSecurityCode: View {
     @EnvironmentObject var onboardingViewModel: OnboardingViewModel
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var coordinator: AppCoordinator
     
     var body: some View {
         VStack {
@@ -46,7 +47,7 @@ struct LoginByEmailSecurityCode: View {
             Spacer()
             
             Button(action: {
-                
+                coordinator.navigateTo(.home)
             }) {
                 Text("Verify code")
                     .continueLoginWithEmailButton()

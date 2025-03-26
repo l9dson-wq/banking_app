@@ -9,20 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isShowingSplash = true
+    @StateObject private var coordinator = AppCoordinator()
     
     var body: some View {
         ZStack {
-            PostSplashView()
-                .opacity(isShowingSplash ? 0 : 1)
-                .zIndex(0)
-            
-            SplashView()
-                .opacity(isShowingSplash ? 1 : 0)
-                .zIndex(1)
+            if isShowingSplash {
+                SplashView()
+                    .transition(.opacity)
+            } else {
+                CoordinatedView()
+                    .environmentObject(coordinator)
+                    .transition(.opacity)
+            }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .onAppear {
-            // set a timer to change the state to show a different view after 2 seconds
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 withAnimation(.easeInOut(duration: 0.7)) {
                     isShowingSplash = false

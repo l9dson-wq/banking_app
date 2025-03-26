@@ -11,6 +11,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		D0097B3D2D87B3F800FBFA67 /* bankingDomain */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = bankingDomain;
+			sourceTree = "<group>";
+		};
 		D063B2DE2D7DF1E6009E1041 /* banking */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = banking;
@@ -32,7 +37,7 @@
 		D063B2D32D7DF1E6009E1041 = {
 			isa = PBXGroup;
 			children = (
-				D063B2EF2D7DF3DA009E1041 /* bankingDomain */,
+				D0097B3D2D87B3F800FBFA67 /* bankingDomain */,
 				D063B2DE2D7DF1E6009E1041 /* banking */,
 				D063B2DD2D7DF1E6009E1041 /* Products */,
 			);
@@ -44,13 +49,6 @@
 				D063B2DC2D7DF1E6009E1041 /* banking.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		D063B2EF2D7DF3DA009E1041 /* bankingDomain */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = bankingDomain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -69,6 +67,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				D0097B3D2D87B3F800FBFA67 /* bankingDomain */,
 				D063B2DE2D7DF1E6009E1041 /* banking */,
 			);
 			name = banking;
